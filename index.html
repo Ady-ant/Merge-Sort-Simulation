@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Merge Sort Learning Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="visualization-area">
+    <h1>Merge Sort Interactive Demonstration</h1>
+    
+    <section id="control-panel">
+      <input 
+        type="text" 
+        id="user-array-input" 
+        placeholder="Enter numbers separated by commas (e.g., 4, 2, 7, 1, 9)" 
+        aria-label="Enter custom array"
+      />
+      <button onclick="processUserInput()">Custom Array</button>
+      <button onclick="createRandomArray()">Random Array</button>
+      <button onclick="beginVisualization()">Start</button>
+      <button onclick="pauseVisualization()">Pause</button>
+      <button onclick="advanceOneStep()">Next Step</button>
+      <button onclick="restartVisualization()">Reset</button>
+      <select id="animation-speed" aria-label="Choose animation speed">
+        <option value="1000">Slow</option>
+        <option value="500" selected>Normal</option>
+        <option value="200">Fast</option>
+      </select>
+    </section>
+    
+    <div id="visualization-canvas"></div>
+    <div id="status-message"></div>
+  </main>
+
+  <aside class="information-panel">
+    <details>
+      <summary>Algorithm Pseudocode</summary>
+      <div>
+        <pre>
+function mergeSort(array):
+  if length(array) ≤ 1:
+    return array
+  
+  mid = length(array) / 2
+  left = mergeSort(array[0:mid])
+  right = mergeSort(array[mid:end])
+  
+  return merge(left, right)
+
+function merge(left, right):
+  result = []
+  
+  while left is not empty and right is not empty:
+    if first(left) ≤ first(right):
+      append first(left) to result
+      remove first(left)
+    else:
+      append first(right) to result
+      remove first(right)
+  
+  append remaining elements from left to result
+  append remaining elements from right to result
+  
+  return result
+        </pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Program Features</summary>
+      <div>
+        <ul>
+          <li>Step-by-step visualization of the merge sort process</li>
+          <li>Support for custom input arrays or random array generation</li>
+          <li>Adjustable animation speed control</li>
+          <li>Interactive stepping through the algorithm</li>
+          <li>Visual highlighting of split and merge operations</li>
+          <li>Detailed status messages for each operation</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Algorithm Complexity</summary>
+      <div>
+        <ul>
+          <li><strong>Time Complexity (Best/Average/Worst):</strong> O(n log n)</li>
+          <li><strong>Space Complexity:</strong> O(n) for temporary arrays</li>
+        </ul>
+        <p>Merge sort is highly efficient and consistent in performance, making it ideal for large datasets where predictable behavior is important.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How Merge Sort Works</summary>
+      <div>
+        <p>Merge sort follows the divide-and-conquer paradigm:</p>
+        <ol>
+          <li><strong>Divide:</strong> The array is recursively split into halves until each subarray contains one element</li>
+          <li><strong>Conquer:</strong> Single-element arrays are already sorted by definition</li>
+          <li><strong>Combine:</strong> Adjacent subarrays are merged back together while maintaining sorted order</li>
+        </ol>
+        <p>The key insight is that merging two sorted arrays into one sorted array is an efficient O(n) operation.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Compared to Other Sorting Algorithms</summary>
+      <div>
+        <ul>
+          <li><strong>Quick Sort:</strong> Typically faster on average but has O(n²) worst case</li>
+          <li><strong>Heap Sort:</strong> Same O(n log n) guarantee but not stable</li>
+          <li><strong>Bubble Sort:</strong> Simple but inefficient with O(n²) complexity</li>
+          <li><strong>Insertion Sort:</strong> Better for small or nearly sorted datasets</li>
+        </ul>
+        <p>Merge sort excels when stability is required and when predictable performance is more important than raw speed.</p>
+      </div>
+    </details>
+
+    <details open>
+      <summary>Project Information</summary>
+      <div>
+        <p><strong>Team Members:</strong> Aaryan Baadkar, Alapan Barman, Adyant Shrivastav</p>
+        <p><strong>Institution:</strong> K.J. Somaiya College of Engineering</p>
+        <p><strong>Course:</strong> Analysis of Algorithms</p>
+      </div>
+    </details>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
